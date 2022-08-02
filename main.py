@@ -11,7 +11,7 @@ HEADERS = {
 
 
 def get_html(url):
-    proxy = {'https': '185.148.223.76:3128'}
+    proxy = {'https': '81.23.100.154:8080'}
     r = requests.get(url, headers=HEADERS, proxies=proxy)
     soup = BeautifulSoup(r.text, 'lxml')
 
@@ -21,25 +21,28 @@ def get_html(url):
     return ip, location
 
 
-try:
-    connection = psycopg2.connect(
-        host=host,
-        user=user,
-        password=password,
-        database=db_name
-    )
+#
+# try:
+#     connection = psycopg2.connect(
+#         host=host,
+#         user=user,
+#         password=password,
+#         database=db_name
+#     )
+#
+#     # cursor = connection.cursor()
+#     with connection.cursor() as cursor:
+#         cursor.execute(
+#             "SELECT version();"
+#         )
+#         print(f"Server version: {cursor.fetchone()}")
+#
+# except Exception as _ex:
+#     print("[INFO] Error while working with PostgreSQL", _ex)
+# finally:
+#     if connection:
+#         # cursor.close()
+#         connection.close()
+#         print("[INFO] PostgreSQL connection closed")
 
-    # cursor = connection.cursor()
-    with connection.cursor() as cursor:
-        cursor.execute(
-            "SELECT version();"
-        )
-        print(f"Server version: {cursor.fetchone()}")
-
-except Exception as _ex:
-    print("[INFO] Error while working with PostgreSQL", _ex)
-finally:
-    if connection:
-        # cursor.close()
-        connection.close()
-        print("[INFO] PostgreSQL connection closed")
+print(get_html(URL))
