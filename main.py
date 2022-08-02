@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
-import psycopg2
-from config import host, user, password, db_name
+# import psycopg2
+# from config import host, user, password, db_name
 
 # URL = 'https://roszdravnadzor.gov.ru/'
 URL = 'https://2ip.ru/'
